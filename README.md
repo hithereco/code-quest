@@ -22,3 +22,9 @@ yarn cypress run
 테스트 코드는 cypress/e2e/ 폴더 밑에 존재합니다.
 
 모든 테스트를 pass 시켜보세요!
+
+> 특정 테스트만 실행시키고 싶다면
+ 
+```bash
+yarn cypress run --spec "cypress/e2e/[파일명].cy.ts"
+```
