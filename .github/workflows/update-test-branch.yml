@@ -1,0 +1,22 @@
+name: Update Test Branch
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  update-test-branch:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout master branch
+        uses: actions/checkout@v4
+        with:
+          ref: master
+      - name: Fetch test branch
+        run: git fetch origin test
+      - name: Force push to test branch
+        run: |
+          git config --global user.name 'tallpizza'
+          git config --global user.email 'tallpizza@naver.com'
+          git push --force origin HEAD:test

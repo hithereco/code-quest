@@ -4,10 +4,6 @@ on:
   pull_request:
     branches:
       - test
-  push:
-    branches:
-      - master
-
 jobs:
   cypress-run:
     runs-on: ubuntu-22.04
@@ -39,21 +35,3 @@ jobs:
         with:
           build: npm run build
           start: npm start
-
-  update-test-branch:
-    if: github.ref == 'refs/heads/master'
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout master branch
-        uses: actions/checkout@v4
-        with:
-          ref: master
-
-      - name: Fetch test branch
-        run: git fetch origin test
-
-      - name: Force push to test branch
-        run: |
-          git config --global user.name 'tallpizza'
-          git config --global user.email 'tallpizza@naver.com'
-          git push --force origin HEAD:test
