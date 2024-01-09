@@ -1,4 +1,4 @@
-describe("useState", () => {
+describe("setState", () => {
   it("/setState 페이지에는 숫자가 들어있는 <p>가 있어야합니다.", () => {
     cy.visit("/useState");
     cy.get("p").invoke("text").should("match", /\d+/);
